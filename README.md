@@ -1,96 +1,111 @@
-**README.md**
+# Social Media API
 
-# Django Project Setup
+## Project Description
+The **Social Media API** simulates the core functionalities of a social media platform. It provides endpoints for user management, post creation and interaction, user relationships (following and followers), and a personalized user feed. The API is built following RESTful principles using Django and Django REST Framework (DRF).
 
-This repository contains a basic Django project setup. Follow the instructions below to set up the project locally.
+## Features
+### User Management
+- User registration, authentication, and profile management.
+- Secure user data with token-based authentication.
 
----
+### Post Management
+- Create, retrieve, update, and delete posts.
+- Add media (optional) to posts.
 
-## **Project Structure**
-The repository contains the following:
-- A Django project initialized with a virtual environment.
-- A `.gitignore` file to exclude unnecessary files from version control.
-- An `initial app` for the project.
-  
----
+### Following System
+- Follow and unfollow users.
+- View followers and following lists.
 
-## **Setup Instructions**
+### User Feed
+- Retrieve posts from followed users in reverse chronological order.
 
-### 1. **Clone the Repository**
-Start by cloning this repository to your local machine:
-```bash
-https://github.com/abel-hak/Social-Media-Api.git
-```
+### Notifications
+- Receive updates about activities such as follows, likes, and comments.
 
----
+### Messaging
+- Send and receive messages between users.
 
-### 2. **Create a Virtual Environment**
-Ensure that Python is installed (version 3.8+ recommended). Set up a virtual environment:
-```bash
+## API Endpoints
+### Users
+- **POST /api/register/**: Register a new user.
+- **POST /api/login/**: Login and get a JWT token.
+- **GET /api/user/profile/**: View authenticated user's profile.
+- **POST /api/logout/**: Logout and invalidate the token.
+
+### Posts
+- **POST /api/posts/**: Create a new post.
+- **GET /api/posts/**: Retrieve all posts.
+- **POST /api/posts/{post_id}/like/**: Like a specific post.
+- **POST /api/posts/{post_id}/comment/**: Add a comment to a post.
+
+### Follow System
+- **POST /api/users/{user_id}/follow/**: Follow a user.
+- **DELETE /api/users/{user_id}/unfollow/**: Unfollow a user.
+- **GET /api/followers/**: List all followers.
+- **GET /api/following/**: List all following users.
+
+### Notifications
+- **GET /api/notifications/**: View user notifications.
+
+### Messaging
+- **POST /api/messages/**: Send a message to another user.
+
+## Technologies Used
+- **Backend Framework**: Django
+- **API Framework**: Django REST Framework (DRF)
+- **Authentication**: DRF Token-based Authentication
+- **Database**: SQLite (default) or PostgreSQL for production
+- **Version Control**: Git and GitHub
+
+## Setup Instructions
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/username/project-name.git
+   cd project-name
+Create and Activate a Virtual Environment:
+
+bash
+Copy code
 python -m venv venv
-```
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+Install Dependencies:
 
-Activate the virtual environment:
-- On Windows:
-    ```bash
-    venv\Scripts\activate
-    ```
-- On macOS/Linux:
-    ```bash
-    source venv/bin/activate
-    ```
-
----
-
-### 3. **Install Dependencies**
-Install the required packages, including Django:
-```bash
+bash
+Copy code
 pip install -r requirements.txt
-```
+Run Migrations:
 
-If a `requirements.txt` is not provided yet, you can generate it using:
-```bash
-pip freeze > requirements.txt
-```
-
----
-
-### 4. **Run the Django Project**
-Perform the initial migration and run the development server:
-```bash
+bash
+Copy code
+python manage.py makemigrations
 python manage.py migrate
+Run the Development Server:
+
+bash
+Copy code
 python manage.py runserver
-```
+Test Endpoints: Use tools like Postman or cURL to interact with the API.
 
-Visit `http://127.0.0.1:8000/` in your browser to confirm the project is running.
+API Documentation
+Refer to the API Documentation for detailed information about all endpoints.
 
----
+Contribution Guidelines
+Fork the repository.
+Create a new branch for your feature/bug fix.
+Commit your changes and push to your branch.
+Create a pull request for review.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-### 5. **Create Superuser (Optional)**
-To access the Django admin panel:
-```bash
-python manage.py createsuperuser
-```
+Contact
+For questions or support, feel free to contact:
 
-Follow the prompts to set up your admin user.
+Name: Abel Erduno Hakenso
+Email: hakensoabel@gmail.com
+markdown
+Copy code
 
----
-
-### 6. **Initial App**
-An initial app has been set up. Add additional apps as needed using:
-```bash
-python manage.py startapp <app_name>
-```
-
----
-
-## **Project Guidelines**
-- Keep the project modular with multiple apps.
-- Follow Django best practices.
-- Update `requirements.txt` after adding new dependencies.
-- Commit frequently and push changes to the repository.
-
----
-
-## **Contributing**
-Feel free to fork the repository and submit a pull request for improvements or fixes.
+### Next Steps
+- Replace `username/project-name` with the actual GitHub repository URL.
+- Add any missing details, such as advanced setup instructions or deployment steps.
+- Optionally create separate files for API documentation and a license. Let me know if you need templates for those!
